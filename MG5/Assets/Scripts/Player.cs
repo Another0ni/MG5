@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     // Add a MEMBER VARIABLE here for the NavMeshAgent Component named _agent.
     // It does NOT need to be tunable in the Inspector.
 
-    // ??? _agent
+    private Vector3 _agent;
 
     // STEP 1 -----------------------------------------------------------------
 
@@ -28,8 +28,8 @@ public class Player : MonoBehaviour
     // We need a Vector3 to keep track of their LAST KNOWN LOCATION.
     // Add a MEMBER VARIABLE here for that location.
     // It does NOT need to be tunable in the Inspector.
+    private Vector3 _lastPosition
     
-
     // STEP 4 -----------------------------------------------------------------
 
     private Camera _mainCamera;
@@ -47,12 +47,14 @@ public class Player : MonoBehaviour
     //      to use GetComponent to grab this GameObject's NavMeshAgent and store
     //      it in the _agent MEMBER VARIABLE.
     //
-    //private void ????()
-    //{
+    private void Start()
+    {
     //
-    //    _mainCamera = Camera.main;
-    //    _animator = GetComponent<Animator>();
-    //}
+    
+        _mainCamera = Camera.main;
+        _animator = GetComponent<Animator>();
+        _agent = GameObject.GetCompononet<NavMeshAgent>()
+    }
     // STEP 2 -----------------------------------------------------------------
 
     // ------------------------------------------------------------------------
@@ -67,12 +69,14 @@ public class Player : MonoBehaviour
             {
                 Vector3 mouseHitPosition = _raycastHit.point;
 
+
                 // STEP 3 -----------------------------------------------------
                 // Inside this Update method, I've already written code for you
                 //      that finds the location in the game world where the
                 //      player clicked.
                 // This location is stored in mouseHitPosition.
                 // Make the NavMeshAgent move to this position.
+                NavMeshAgent = mouseHitPosition
                 //
                 // Feature 2 should work after this step.
 
@@ -105,11 +109,14 @@ public class Player : MonoBehaviour
         //      the correct one: https://docs.unity3d.com/6000.0/Documentation/ScriptReference/AI.NavMeshAgent.html
         // Feature 3 should work after this.
 
+        if (Input.GetKey(KeyCode.Space)
+          {
 
+        }
         // STEP 6 -------------------------------------------------------------
 
         // Uncomment the below line to fix the Pudu's animation if you want.
-        //_animator.SetBool("isMoving", _agent.velocity.magnitude > 0.0f);
+        _animator.SetBool("isMoving", _agent.velocity.magnitude > 0.0f);
     }
     
     // ------------------------------------------------------------------------
